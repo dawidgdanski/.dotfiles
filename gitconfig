@@ -2,21 +2,37 @@
 	name = Dawid Gdański
 	email = davidgdanski@gmail.com
 [alias]
-	tree = log --graph --oneline --pretty=oneline --abbrev-commit
+	tree = log --graph --oneline --pretty=oneline --abbrev-commit --branches
 	sup = submodule update
 	st = status
 	rmtag = "!rmtag() { git tag -d $1; git push origin --delete $1; }; rmtag"
 	rmb = "!rmbranch() { git branch -D $1; git push origin --delete $1; }; rmbranch"
-    pf = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\" -f"
+    	pf = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\" -f"
 	pch = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\""
 	pr = "!f() { git pull --rebase origin $1; }; f"
 	co = "!f() { git checkout $1; }; f"
 	cb = "!f() { git checkout -b $1; }; f"
-	inc = "!f() { git add . ; git commit -v --amend; }; f"
+	inc = "!f() { git add . ; git commit -v --amend --no-edit; }; f"
+	ince = "!f() { git add . ; git commit -v --amend; }; f"
+	f = "!f() { git fetch; }; f"
 	rw = "!f() { git reset --hard origin/\"$(git rev-parse --abbrev-ref HEAD)\"; }; f"
+	frw = "!f() { git fetch; git rw; }; f"
 	ri = "!f() { git rebase -i origin/$1; }; f"
+	nri = "!f() { git rebase -i HEAD~$1 origin/$2; }; f"
 	rb = "!f() { git rebase origin/$1; }; f"
-	uns = "!f() { git reset HEAD $1; }; f"
+	uns = "!f() { git reset HEAD ./$1; }; f"
 	unm = "!f() { git checkout -- $1; }; f"
+	back = "!f() { git reset --hard HEAD~$1; }; f"
+	c = "!f() { git commit; }; f"
+	ca = "!f() { git add .; git commit; }; f"
+	calm = "!f() { git add .; git commit --date \"$(date)\" --edit -C HEAD@{1}; }; f"
+	cp = "!f() { git cherry-pick $1; }; f"
+	rs = "!f() { git reset --mixed HEAD~1; git status; }; f"
+	fb = "!f() { git fetch; git co `git branch -r | grep $1 | head -n 1 | { read branch; echo ${branch:7}; }`; }; f"
+	# Commits change and pushes if commit message is typed successfully in the interactive session
+	save = "!f() { git ca && git pch; }; f"
+	ovr = "!f() { git inc; git pf; }; f"
+	newdate = "!f() { git commit --amend --no-edit --date \"$(date)\"; }; f"
+	cam = "!git commit --amend"
 [push]
 	default = current
