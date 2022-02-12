@@ -10,3 +10,8 @@ pathprepend() {
         PATH="$1${PATH:+":$PATH"}"
     fi
 }
+
+# CHROME
+chrome() {
+	open -a "Google Chrome" "$@"
+}
