@@ -87,3 +87,8 @@ echo """
   --device=/dev/kmsg \
   gcr.io/cadvisor/cadvisor:v0.47.2
 """
+
+draw_divider
+
+echo "Docker history - presents image history - where it came from and what images it's sitting on top of"
+echo "docker history ubuntu:latest"
