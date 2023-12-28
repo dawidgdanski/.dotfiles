@@ -16,10 +16,34 @@ chrome() {
 	open -a "Google Chrome" "$@"
 }
 
+# VISUAL STUDIO CODE
+vscode () {
+	VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
+}
+
 # MISC
 dircontents() {
     find . -maxdepth 1 -exec du -sh {} +
 }
+
+### JAVA ###
+
+# https://jdk.java.net/21/
+
+java21() {
+   unset JAVA_HOME
+   export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+   java -version
+}
+
+### ALIASES ###
+
+alias gradlew="./gradlew $@"
+alias mvnw="./mvnw $@"
+
+alias cls="clear"
+
+### PYENV ###
 
 # Pyenv - https://github.com/pyenv/pyenv#homebrew-in-macos
 export PYENV_ROOT="$HOME/.pyenv"
