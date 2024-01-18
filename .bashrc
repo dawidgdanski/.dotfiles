@@ -26,6 +26,10 @@ dircontents() {
     find . -maxdepth 1 -exec du -sh {} +
 }
 
+# ALIASES
+
+alias uuid="uuidgen | tr '[:upper:]' '[:lower:]'"
+
 ### JAVA ###
 
 # https://jdk.java.net/21/
