@@ -44,13 +44,13 @@
 	rbc = "!git rebase --continue"
 	rba = "!git rebase --abort"
 	dp = diff --word-diff --unified=10
-[push]
-	default = current
 [core]
-	excludesfile = /Users/user.dir/.gitignore_global
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    excludesfile = /Users/dawid.gdanski/.gitignore_global
+    pager = delta
 [diff]
-	algorithm = histogram
+    algorithm = histogram
 [interactive]
-	diffFilter = diff-so-fancy --patch
-
+    diffFilter = delta --color-only
+[delta]
+    side-by-side = true
+    line-numbers = true
