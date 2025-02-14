@@ -44,6 +44,8 @@
 	rbc = "!git rebase --continue"
 	rba = "!git rebase --abort"
 	dp = diff --word-diff --unified=10
+	# Github
+	repo = !gh browse
 [core]
     excludesfile = /Users/dawid.gdanski/.gitignore_global
     pager = delta
